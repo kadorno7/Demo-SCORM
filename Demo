@@ -1,87 +1,85 @@
-const AddingPatientSCORM = () => {
-  return (
-    <div className="p-4 grid gap-6">
-      <Card>
-        <CardContent>
-          <h1 className="text-2xl font-bold mb-2">Adding a New Patient in P2P</h1>
-          <p className="text-base mb-4">A step-by-step guide to accurately entering new patient information.</p>
-          <Button>Start</Button>
-        </CardContent>
-      </Card>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Adding a New Patient</title>
+    <style>
+        .step { display: none; }
+        .active { display: block; animation: fadeIn 1s; }
+        @keyframes fadeIn { from {opacity: 0;} to {opacity: 1;} }
+        .highlight { background-color: yellow; transition: background-color 0.5s ease; }
+    </style>
+    <script>
+        let currentStep = 0;
+        function showStep(step) {
+            let steps = document.getElementsByClassName('step');
+            for (let i = 0; i < steps.length; i++) steps[i].classList.remove('active');
+            steps[step].classList.add('active');
+        }
 
-      <Card>
-        <CardContent>
-          <h2 className="text-xl font-semibold mb-2">Step 1: Search for Existing Patients</h2>
-          <p className="text-base mb-2">Always search for the patient using their name and date of birth to ensure they are not already in the system. Verify name, address, phone number, and email.</p>
-          <Button>Next</Button>
-        </CardContent>
-      </Card>
+        function checkAnswer(questionId, correctAnswer) {
+            var selected = document.querySelector('input[name="' + questionId + '"]:checked').value;
+            var feedback = document.getElementById(questionId + '-feedback');
+            if (selected === correctAnswer) {
+                feedback.innerHTML = "✅ Correct!";
+                feedback.style.color = "green";
+            } else {
+                feedback.innerHTML = "❌ Incorrect, please try again.";
+                feedback.style.color = "red";
+            }
+        }
 
-      <Card>
-        <CardContent>
-          <h2 className="text-xl font-semibold mb-2">Knowledge Check</h2>
-          <p className="text-base mb-2">Why is it important to verify patient contact information before adding them?</p>
-          <ul className="list-disc ml-5">
-            <li>To avoid duplicate records. ✅</li>
-            <li>It’s not important.</li>
-            <li>To create a backup record.</li>
-          </ul>
-          <Button>Next</Button>
-        </CardContent>
-      </Card>
+        function highlightField(id) {
+            document.getElementById(id).classList.add('highlight');
+            setTimeout(() => document.getElementById(id).classList.remove('highlight'), 1000);
+        }
 
-      <Card>
-        <CardContent>
-          <h2 className="text-xl font-semibold mb-2">Step 2: Adding a New Patient</h2>
-          <p className="text-base mb-2">Click “New Patient” after confirming no existing record.</p>
-          <Button>Next</Button>
-        </CardContent>
-      </Card>
+        window.onload = function() {
+            showStep(0);
+        };
+    </script>
+</head>
+<body>
 
-      <Card>
-        <CardContent>
-          <h2 className="text-xl font-semibold mb-2">Step 3: Entering Patient Information</h2>
-          <p className="text-base mb-2">Required fields: Legal name, email, phone number, DOB, gender. Optional but encouraged: Address, emergency contact, photo. Assign provider and setup portal access.</p>
-          <Button>Next</Button>
-        </CardContent>
-      </Card>
+<h1>Interactive Guide: Adding a New Patient</h1>
 
-      <Card>
-        <CardContent>
-          <h2 className="text-xl font-semibold mb-2">Communication Preferences</h2>
-          <p className="text-base mb-2">Select reminder method and time zone. Confirm email/phone opt-in.</p>
-          <Button>Next</Button>
-        </CardContent>
-      </Card>
+<div class="step active" id="step1">
+    <h2>Step 1: Search for Existing Patient</h2>
+    <p>Ensure no duplicate records. Use name and date of birth. Verify details by <span onclick="highlightField('contact-info')">contact info</span>.</p>
+    <button onclick="showStep(1)">Next</button>
+</div>
 
-      <Card>
-        <CardContent>
-          <h2 className="text-xl font-semibold mb-2">Step 4: Saving and Finalizing</h2>
-          <p className="text-base mb-2">Click “Save” after completing all fields. The patient will receive a portal access email.</p>
-          <Button>Next</Button>
-        </CardContent>
-      </Card>
+<div class="step" id="step2">
+    <h2>Step 2: Click "New Patient"</h2>
+    <p>Proceed only if patient is not found. Click on "New Patient" to start entering details.</p>
+    <button onclick="showStep(2)">Next</button>
+</div>
 
-      <Card>
-        <CardContent>
-          <h2 className="text-xl font-semibold mb-2">Knowledge Check</h2>
-          <p className="text-base mb-2">What is required to successfully set up patient portal access?</p>
-          <ul className="list-disc ml-5">
-            <li>Patient’s email address. ✅</li>
-            <li>Emergency contact details.</li>
-            <li>Photo upload.</li>
-          </ul>
-          <Button>Next</Button>
-        </CardContent>
-      </Card>
-
-      <Card>
-        <CardContent>
-          <h2 className="text-xl font-semibold mb-2">Summary and Best Practices</h2>
-          <p className="text-base mb-2">Always verify patient details. Complete all required fields accurately. Confirm communication preferences and portal access.</p>
-          <Button>Finish</Button>
-        </CardContent>
-      </Card>
+<div class="step" id="step3">
+    <h2>Step 3: Fill in Patient Details</h2>
+    <p id="contact-info">Required: Legal Name, Email, Phone. Optional: Address, Emergency Contact.</p>
+    <p>Drag the items to the correct category:</p>
+    <div>
+        <!-- Example of drag and drop (requires more JS for full functionality) -->
+        <div draggable="true" ondragstart="event.dataTransfer.setData('text/plain',null)" style="margin:5px; padding:10px; border:1px solid #000;">Legal Name</div>
     </div>
-  );
-};
+    <button onclick="showStep(3)">Next</button>
+</div>
+
+<div class="step" id="step4">
+    <h2>Step 4: Save Patient Information</h2>
+    <p>Final review before saving. Ensure completeness and accuracy.</p>
+    <button onclick="showStep(4)">Finish</button>
+</div>
+
+<h3>Quiz: What must be filled before saving?</h3>
+<form>
+    <input type="radio" name="q2" value="a"> Only Name<br>
+    <input type="radio" name="q2" value="b"> Name, Email, Phone<br>
+    <input type="radio" name="q2" value="c"> Everything including photo<br>
+    <input type="button" value="Submit" onclick="checkAnswer('q2', 'b')">
+    <div id="q2-feedback"></div>
+</form>
+
+</body>
+</html>
