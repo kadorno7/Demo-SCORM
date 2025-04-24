@@ -3,13 +3,6 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 
-{
-  "name": "demo-scorm",
-  "version": "0.1.0",
-  "homepage": "https://kadorno7.github.io/Demo-SCORM",
-  ...
-}
-
 const AddingPatientSCORM = () => {
   return (
     <div className="p-4 grid gap-6">
