@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<meta http-equiv="Content-Security-Policy" content="frame-ancestors *;">
     <meta charset="UTF-8">
     <title>Adding a New Patient</title>
     <style>
