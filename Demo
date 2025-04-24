@@ -1,0 +1,94 @@
+import React from "react";
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { motion } from "framer-motion";
+
+const AddingPatientSCORM = () => {
+  return (
+    <div className="p-4 grid gap-6">
+      <Card>
+        <CardContent>
+          <h1 className="text-2xl font-bold mb-2">Adding a New Patient in P2P</h1>
+          <p className="text-base mb-4">A step-by-step guide to accurately entering new patient information.</p>
+          <Button>Start</Button>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardContent>
+          <h2 className="text-xl font-semibold mb-2">Step 1: Search for Existing Patients</h2>
+          <p className="text-base mb-2">Always search for the patient using their name and date of birth to ensure they are not already in the system. Verify name, address, phone number, and email.</p>
+          <Button>Next</Button>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardContent>
+          <h2 className="text-xl font-semibold mb-2">Knowledge Check</h2>
+          <p className="text-base mb-2">Why is it important to verify patient contact information before adding them?</p>
+          <ul className="list-disc ml-5">
+            <li>To avoid duplicate records. ✅</li>
+            <li>It’s not important.</li>
+            <li>To create a backup record.</li>
+          </ul>
+          <Button>Next</Button>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardContent>
+          <h2 className="text-xl font-semibold mb-2">Step 2: Adding a New Patient</h2>
+          <p className="text-base mb-2">Click “New Patient” after confirming no existing record.</p>
+          <Button>Next</Button>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardContent>
+          <h2 className="text-xl font-semibold mb-2">Step 3: Entering Patient Information</h2>
+          <p className="text-base mb-2">Required fields: Legal name, email, phone number, DOB, gender. Optional but encouraged: Address, emergency contact, photo. Assign provider and setup portal access.</p>
+          <Button>Next</Button>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardContent>
+          <h2 className="text-xl font-semibold mb-2">Communication Preferences</h2>
+          <p className="text-base mb-2">Select reminder method and time zone. Confirm email/phone opt-in.</p>
+          <Button>Next</Button>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardContent>
+          <h2 className="text-xl font-semibold mb-2">Step 4: Saving and Finalizing</h2>
+          <p className="text-base mb-2">Click “Save” after completing all fields. The patient will receive a portal access email.</p>
+          <Button>Next</Button>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardContent>
+          <h2 className="text-xl font-semibold mb-2">Knowledge Check</h2>
+          <p className="text-base mb-2">What is required to successfully set up patient portal access?</p>
+          <ul className="list-disc ml-5">
+            <li>Patient’s email address. ✅</li>
+            <li>Emergency contact details.</li>
+            <li>Photo upload.</li>
+          </ul>
+          <Button>Next</Button>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardContent>
+          <h2 className="text-xl font-semibold mb-2">Summary and Best Practices</h2>
+          <p className="text-base mb-2">Always verify patient details. Complete all required fields accurately. Confirm communication preferences and portal access.</p>
+          <Button>Finish</Button>
+        </CardContent>
+      </Card>
+    </div>
+  );
+};
+
+export default AddingPatientSCORM;
